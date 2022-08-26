@@ -1,31 +1,57 @@
-package com.wbarra.profileapi.domain.entities;
+package com.wbarra.profileapi.persistence.models;
 
+import com.wbarra.profileapi.domain.entities.Address;
+import com.wbarra.profileapi.domain.entities.TypeDocument;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 
-public class User {
+@Entity
+@Table(name = "users")
+public class UserDAO {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_user")
     private Integer userId;
 
+    @Column(name = "identification_number")
     private String identicationNumber;
 
+    @Column(name = "id_type_document")
     private Integer typeDocumentId;
+
 
     private String name;
 
-    private TypeDocument typeDocument;
+    @ManyToOne
+    @JoinColumn(name = "id_type_document", insertable = false, updatable = false)
+    private TypeDocumentDAO typeDocument;
 
     private String mail;
 
     private String phone;
 
-    private Address address;
+    @OneToOne
+    @JoinColumn(name = "id_address")
+    private AddressDAO address;
 
     private String skill;
 
+    @Column(name = "is_change_of_residence")
     private Boolean isChangeOfResidence;
 
     private LocalDate birthday;
 
     private Integer age;
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
     public String getIdenticationNumber() {
         return identicationNumber;
@@ -43,14 +69,6 @@ public class User {
         this.typeDocumentId = typeDocumentId;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
     public String getName() {
         return name;
     }
@@ -59,11 +77,11 @@ public class User {
         this.name = name;
     }
 
-    public TypeDocument getTypeDocument() {
+    public TypeDocumentDAO getTypeDocument() {
         return typeDocument;
     }
 
-    public void setTypeDocument(TypeDocument typeDocument) {
+    public void setTypeDocument(TypeDocumentDAO typeDocument) {
         this.typeDocument = typeDocument;
     }
 
@@ -83,11 +101,11 @@ public class User {
         this.phone = phone;
     }
 
-    public Address getAddress() {
+    public AddressDAO getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(AddressDAO address) {
         this.address = address;
     }
 
