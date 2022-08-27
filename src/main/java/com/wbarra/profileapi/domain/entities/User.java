@@ -1,10 +1,13 @@
 package com.wbarra.profileapi.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class User {
     private Integer userId;
 
@@ -27,6 +30,7 @@ public class User {
 
     private Boolean isChangeOfResidence;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate birthday;
 
     private Integer age;

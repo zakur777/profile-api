@@ -1,7 +1,8 @@
 package com.wbarra.profileapi.persistence.models;
 
-import com.wbarra.profileapi.domain.entities.Address;
-import com.wbarra.profileapi.domain.entities.TypeDocument;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -38,9 +39,10 @@ public class UserDAO {
 
     private String skill;
 
-    @Column(name = "is_change_of_residence")
+    @Column(name = "is_change_of_residence", nullable = false, columnDefinition = "BOOLEAN")
     private Boolean isChangeOfResidence;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate birthday;
 
     private Integer age;

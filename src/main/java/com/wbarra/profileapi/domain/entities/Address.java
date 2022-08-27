@@ -1,5 +1,8 @@
 package com.wbarra.profileapi.domain.entities;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class Address {
     private Integer addressId;
 

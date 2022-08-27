@@ -1,7 +1,10 @@
 package com.wbarra.profileapi.domain.entities;
 
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDate;
 
+@NoArgsConstructor
 public class Education {
     private Integer educationId;
 

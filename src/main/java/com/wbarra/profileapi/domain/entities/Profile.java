@@ -1,10 +1,12 @@
 package com.wbarra.profileapi.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.Optional;
 
+@NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Profile {
     private Integer profileId;
