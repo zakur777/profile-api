@@ -1,7 +1,10 @@
 package com.wbarra.profileapi.domain.entities;
 
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDate;
 
+@NoArgsConstructor
 public class User {
     private Integer userId;
 
@@ -26,6 +29,8 @@ public class User {
     private LocalDate birthday;
 
     private Integer age;
+
+    private Profile profile;
 
     public String getIdenticationNumber() {
         return identicationNumber;
@@ -121,5 +126,13 @@ public class User {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 }

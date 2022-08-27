@@ -13,7 +13,6 @@ public class Profile {
 
     private String aboutMe;
 
-    private User user;
 
     public Integer getProfileId() {
         return profileId;
@@ -55,11 +54,4 @@ public class Profile {
         this.aboutMe = aboutMe;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

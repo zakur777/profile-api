@@ -18,11 +18,9 @@ public class UserDAO {
     @Column(name = "identification_number")
     private String identicationNumber;
 
+    private String name;
     @Column(name = "id_type_document")
     private Integer typeDocumentId;
-
-
-    private String name;
 
     @ManyToOne
     @JoinColumn(name = "id_type_document", insertable = false, updatable = false)
@@ -44,6 +42,10 @@ public class UserDAO {
     private LocalDate birthday;
 
     private Integer age;
+
+    @OneToOne
+    @JoinColumn(name = "id_profile")
+    private ProfileDAO profile;
 
     public Integer getUserId() {
         return userId;
@@ -139,5 +141,13 @@ public class UserDAO {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public ProfileDAO getProfile() {
+        return profile;
+    }
+
+    public void setProfile(ProfileDAO profile) {
+        this.profile = profile;
     }
 }
