@@ -20,6 +20,7 @@ public class User {
 
     private String phone;
 
+    private Integer addressId;
     private Address address;
 
     private String skill;
@@ -29,6 +30,8 @@ public class User {
     private LocalDate birthday;
 
     private Integer age;
+
+    private Integer profileId;
 
     private Profile profile;
 
@@ -88,6 +91,14 @@ public class User {
         this.phone = phone;
     }
 
+    public Integer getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(Integer addressId) {
+        this.addressId = addressId;
+    }
+
     public Address getAddress() {
         return address;
     }
@@ -126,6 +137,14 @@ public class User {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public Integer getProfileId() {
+        return profileId;
+    }
+
+    public void setProfileId(Integer profileId) {
+        this.profileId = profileId;
     }
 
     public Profile getProfile() {

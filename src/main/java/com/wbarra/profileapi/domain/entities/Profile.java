@@ -1,7 +1,11 @@
 package com.wbarra.profileapi.domain.entities;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.util.List;
+import java.util.Optional;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Profile {
     private Integer profileId;
 

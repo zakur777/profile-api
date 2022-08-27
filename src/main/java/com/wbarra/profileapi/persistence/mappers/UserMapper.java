@@ -23,11 +23,13 @@ public interface UserMapper {
             @Mapping(source = "typeDocument", target = "typeDocument"),
             @Mapping(source = "mail", target = "mail"),
             @Mapping(source = "phone", target = "phone"),
+            @Mapping(source = "addressId", target = "addressId"),
             @Mapping(source = "address", target = "address"),
             @Mapping(source = "skill", target = "skill"),
             @Mapping(source = "changeOfResidence", target = "changeOfResidence"),
             @Mapping(source = "birthday", target = "birthday"),
             @Mapping(source = "age", target = "age"),
+            @Mapping(source = "profileId", target = "profileId"),
             @Mapping(source = "profile", target = "profile")
     })
     User toUser(UserDAO dao);

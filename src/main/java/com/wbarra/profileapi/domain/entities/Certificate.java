@@ -72,4 +72,5 @@ public class Certificate {
     public void setLevelEducation(LevelEducation levelEducation) {
         this.levelEducation = levelEducation;
     }
+
 }

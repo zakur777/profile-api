@@ -6,6 +6,7 @@ import com.wbarra.profileapi.domain.entities.Experience;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name = "profile")
@@ -17,12 +18,15 @@ public class ProfileDAO {
     private Integer profileId;
 
     @OneToMany(mappedBy = "profile")
+    @Column(insertable = false, updatable = false)
     private List<EducationDAO> educations;
 
     @OneToMany(mappedBy = "profile")
+    @Column(insertable = false, updatable = false)
     private List<ExperienceDAO> experiences;
 
     @OneToMany(mappedBy = "profile")
+    @Column(insertable = false, updatable = false)
     private List<CertificateDAO> certificates;
 
     @Column(name = "about_me")

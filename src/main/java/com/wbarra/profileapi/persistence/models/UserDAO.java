@@ -30,8 +30,10 @@ public class UserDAO {
 
     private String phone;
 
+    @Column(name = "id_address")
+    private Integer addressId;
     @OneToOne
-    @JoinColumn(name = "id_address")
+    @JoinColumn(name = "id_address", insertable = false, updatable = false)
     private AddressDAO address;
 
     private String skill;
@@ -43,8 +45,11 @@ public class UserDAO {
 
     private Integer age;
 
+    @Column(name = "id_profile")
+    private Integer profileId;
+
     @OneToOne
-    @JoinColumn(name = "id_profile")
+    @JoinColumn(name = "id_profile", insertable = false, updatable = false)
     private ProfileDAO profile;
 
     public Integer getUserId() {
@@ -103,6 +108,14 @@ public class UserDAO {
         this.phone = phone;
     }
 
+    public Integer getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(Integer addressId) {
+        this.addressId = addressId;
+    }
+
     public AddressDAO getAddress() {
         return address;
     }
@@ -141,6 +154,14 @@ public class UserDAO {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public Integer getProfileId() {
+        return profileId;
+    }
+
+    public void setProfileId(Integer profileId) {
+        this.profileId = profileId;
     }
 
     public ProfileDAO getProfile() {
