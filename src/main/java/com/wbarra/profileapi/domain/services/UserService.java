@@ -40,4 +40,16 @@ public class UserService {
     public List<User> findByProfile_Certificates_educationLevelId(Integer educationLevelId) {
         return gateway.findByProfile_Certificates_educationLevelId(educationLevelId);
     }
+
+    public List<User> findByProfileMasterAndDoctorate() {
+        return gateway.findByProfileMasterAndDoctorate();
+    }
+
+    public List<User> finByProfileCityOrCountry(String city, String country) {
+        return gateway.finByProfileCityOrCountry(city, country);
+    }
+
+    public List<User> findChangeOfResidence() {
+        return gateway.findChangeOfResidence();
+    }
 }

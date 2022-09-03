@@ -5,6 +5,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
@@ -16,10 +20,16 @@ public class UserDAO {
     @Column(name = "id_user")
     private Integer userId;
 
+    @NotEmpty(message = "The Identification number is required")
     @Column(name = "identification_number")
     private String identicationNumber;
 
+    @NotEmpty(message = "The name is required")
+    @Size(min = 4, max = 120, message = "The name must have at least {min} and at most {max} characters.")
     private String name;
+
+    @NotEmpty(message = "The typeDocumentId is required")
+    @Positive(message = "The typeDocumentId must be greater than zero")
     @Column(name = "id_type_document")
     private Integer typeDocumentId;
 
@@ -27,6 +37,7 @@ public class UserDAO {
     @JoinColumn(name = "id_type_document", insertable = false, updatable = false)
     private TypeDocumentDAO typeDocument;
 
+    @Email
     private String mail;
 
     private String phone;
