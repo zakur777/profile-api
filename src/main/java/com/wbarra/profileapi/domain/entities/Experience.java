@@ -1,10 +1,13 @@
 package com.wbarra.profileapi.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Experience {
     private Integer experienceId;
 
@@ -12,13 +15,17 @@ public class Experience {
 
     private String companyName;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate startDate;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate endDate;
 
     private String country;
 
     private String description;
+
+    private Integer profileId;
 
     public Integer getExperienceId() {
         return experienceId;
@@ -74,5 +81,13 @@ public class Experience {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getProfileId() {
+        return profileId;
+    }
+
+    public void setProfileId(Integer profileId) {
+        this.profileId = profileId;
     }
 }

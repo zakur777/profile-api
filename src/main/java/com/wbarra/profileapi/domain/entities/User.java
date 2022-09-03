@@ -28,7 +28,7 @@ public class User {
 
     private String skill;
 
-    private Boolean isChangeOfResidence;
+    private boolean isChangeOfResidence;
 
     @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate birthday;
@@ -119,11 +119,11 @@ public class User {
         this.skill = skill;
     }
 
-    public Boolean getChangeOfResidence() {
+    public boolean getChangeOfResidence() {
         return isChangeOfResidence;
     }
 
-    public void setChangeOfResidence(Boolean changeOfResidence) {
+    public void setChangeOfResidence(boolean changeOfResidence) {
         isChangeOfResidence = changeOfResidence;
     }
 

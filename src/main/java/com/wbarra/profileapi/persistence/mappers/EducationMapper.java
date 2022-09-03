@@ -9,7 +9,7 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {LevelEducationMapper.class})
+@Mapper(componentModel = "spring", uses = {EducationLevelMapper.class})
 public interface EducationMapper {
 
     @Mappings({
@@ -19,7 +19,11 @@ public interface EducationMapper {
             @Mapping(source = "startDate", target = "startDate"),
             @Mapping(source = "endDate", target = "endDate"),
             @Mapping(source = "nameOfTitle", target = "nameOfTitle" ),
-            @Mapping(source = "levelEducation", target = "levelEducation"),
+            @Mapping(source = "educationLevelId", target = "educationLevelId" ),
+            @Mapping(source = "educationLevel", target = "educationLevel" ),
+            @Mapping(source = "createAt", target = "createAt"),
+            @Mapping(source = "updateAt", target ="updateAt" ),
+            @Mapping(source = "estado", target = "estado")
     })
     Education toEducation(EducationDAO dao);
 

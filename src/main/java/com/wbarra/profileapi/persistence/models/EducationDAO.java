@@ -1,13 +1,22 @@
 package com.wbarra.profileapi.persistence.models;
 
 import com.wbarra.profileapi.domain.entities.LevelEducation;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
+
+@SuperBuilder
+@EqualsAndHashCode(callSuper = false)
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "educations")
-public class EducationDAO {
+public class EducationDAO extends BaseDAO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,6 +47,13 @@ public class EducationDAO {
     @ManyToOne
     @JoinColumn(name = "id_profile", insertable = false, updatable = false)
     private ProfileDAO profile;
+
+    @Column(name = "id_education_level")
+    private Integer educationLevelId;
+
+    @OneToOne
+    @JoinColumn(name = "id_education_level", insertable = false, updatable = false)
+    private EducationLevelDAO educationLevel;
 
     public Integer getEducationId() {
         return educationId;
@@ -109,5 +125,21 @@ public class EducationDAO {
 
     public void setProfile(ProfileDAO profile) {
         this.profile = profile;
+    }
+
+    public Integer getEducationLevelId() {
+        return educationLevelId;
+    }
+
+    public void setEducationLevelId(Integer educationLevelId) {
+        this.educationLevelId = educationLevelId;
+    }
+
+    public EducationLevelDAO getEducationLevel() {
+        return educationLevel;
+    }
+
+    public void setEducationLevel(EducationLevelDAO educationLevel) {
+        this.educationLevel = educationLevel;
     }
 }

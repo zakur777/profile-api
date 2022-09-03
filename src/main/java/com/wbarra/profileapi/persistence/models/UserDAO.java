@@ -39,8 +39,9 @@ public class UserDAO {
 
     private String skill;
 
-    @Column(name = "is_change_of_residence", nullable = false, columnDefinition = "BOOLEAN")
-    private Boolean isChangeOfResidence;
+    @Column(name = "is_change_of_residence", nullable = false)
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private boolean isChangeOfResidence;
 
     @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate birthday;
@@ -134,11 +135,11 @@ public class UserDAO {
         this.skill = skill;
     }
 
-    public Boolean getChangeOfResidence() {
+    public boolean getChangeOfResidence() {
         return isChangeOfResidence;
     }
 
-    public void setChangeOfResidence(Boolean changeOfResidence) {
+    public void setChangeOfResidence(boolean changeOfResidence) {
         isChangeOfResidence = changeOfResidence;
     }
 

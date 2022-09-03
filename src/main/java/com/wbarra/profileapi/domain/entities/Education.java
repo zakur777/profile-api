@@ -1,11 +1,19 @@
 package com.wbarra.profileapi.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
 
+@SuperBuilder
+@EqualsAndHashCode(callSuper = false)
+@AllArgsConstructor
 @NoArgsConstructor
-public class Education {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Education extends BaseEntity {
     private Integer educationId;
 
     private String institutionName;
@@ -18,7 +26,10 @@ public class Education {
 
     private String nameOfTitle;
 
-    private LevelEducation levelEducation;
+    private Integer educationLevelId;
+
+    private EducationLevel educationLevel;
+
 
     public Integer getEducationId() {
         return educationId;
@@ -68,11 +79,19 @@ public class Education {
         this.nameOfTitle = nameOfTitle;
     }
 
-    public LevelEducation getLevelEducation() {
-        return levelEducation;
+    public Integer getEducationLevelId() {
+        return educationLevelId;
     }
 
-    public void setLevelEducation(LevelEducation levelEducation) {
-        this.levelEducation = levelEducation;
+    public void setEducationLevelId(Integer educationLevelId) {
+        this.educationLevelId = educationLevelId;
+    }
+
+    public EducationLevel getEducationLevel() {
+        return educationLevel;
+    }
+
+    public void setEducationLevel(EducationLevel educationLevel) {
+        this.educationLevel = educationLevel;
     }
 }

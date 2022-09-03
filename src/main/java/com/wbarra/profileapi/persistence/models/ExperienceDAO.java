@@ -1,5 +1,7 @@
 package com.wbarra.profileapi.persistence.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -18,9 +20,11 @@ public class ExperienceDAO {
     @Column(name = "company_name")
     private String companyName;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     @Column(name = "start_date")
     private LocalDate startDate;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     @Column(name = "end_date")
     private LocalDate endDate;
 
