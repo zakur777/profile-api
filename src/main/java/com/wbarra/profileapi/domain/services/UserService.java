@@ -36,4 +36,8 @@ public class UserService {
     public Optional<List<User>> getUsersByTypeDocumentId(Integer idTypeDocument) {
         return gateway.getByTypeDocumentId(idTypeDocument);
     }
+
+    public List<User> findByProfile_Certificates_educationLevelId(Integer educationLevelId) {
+        return gateway.findByProfile_Certificates_educationLevelId(educationLevelId);
+    }
 }

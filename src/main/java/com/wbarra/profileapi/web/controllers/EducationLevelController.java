@@ -43,6 +43,6 @@ public class EducationLevelController {
 
     @PostMapping("/update")
     public ResponseEntity<EducationLevel> updateEducationLevel(@RequestBody EducationLevel educationLevel) {
-        return new ResponseEntity<>(service.saveEducationLevel(educationLevel), HttpStatus.OK);
+        return new ResponseEntity<>(service.updateEducationLevel(educationLevel), HttpStatus.OK);
     }
 }

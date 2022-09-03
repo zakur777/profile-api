@@ -47,4 +47,10 @@ public class UserRepository implements UserGateway {
         List<UserDAO> daos = crudRepository.findByTypeDocumentIdOrderByAgeAsc(idTypeDocument);
         return Optional.of(mapper.toUsers(daos));
     }
+
+    @Override
+    public List<User> findByProfile_Certificates_educationLevelId(Integer educationLevelId) {
+        List<UserDAO> daos = (List<UserDAO>) crudRepository.findByProfile_Certificates_educationLevelId(educationLevelId);
+        return mapper.toUsers(daos);
+    }
 }

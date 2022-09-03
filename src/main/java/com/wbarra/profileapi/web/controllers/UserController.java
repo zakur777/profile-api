@@ -46,4 +46,9 @@ public class UserController {
     public ResponseEntity<Optional<List<User>>> getUsersByTypeDocumentId(@PathVariable("id") Integer id){
         return new ResponseEntity<>(service.getUsersByTypeDocumentId(id), HttpStatus.OK);
     }
+
+    @GetMapping("/all/pregrade")
+    public ResponseEntity<List<User>> findByProfile_Certificates_educationLevelId() {
+        return new ResponseEntity<>(service.findByProfile_Certificates_educationLevelId(11), HttpStatus.OK);
+    }
 }

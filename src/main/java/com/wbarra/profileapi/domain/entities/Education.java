@@ -1,5 +1,6 @@
 package com.wbarra.profileapi.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -20,8 +21,10 @@ public class Education extends BaseEntity {
 
     private String description;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate startDate;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate endDate;
 
     private String nameOfTitle;
@@ -30,6 +33,7 @@ public class Education extends BaseEntity {
 
     private EducationLevel educationLevel;
 
+    private Integer profileId;
 
     public Integer getEducationId() {
         return educationId;
@@ -93,5 +97,13 @@ public class Education extends BaseEntity {
 
     public void setEducationLevel(EducationLevel educationLevel) {
         this.educationLevel = educationLevel;
+    }
+
+    public Integer getProfileId() {
+        return profileId;
+    }
+
+    public void setProfileId(Integer profileId) {
+        this.profileId = profileId;
     }
 }

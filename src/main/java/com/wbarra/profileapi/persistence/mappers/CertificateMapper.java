@@ -9,7 +9,7 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {LevelEducationMapper.class})
+@Mapper(componentModel = "spring", uses = {EducationLevelMapper.class})
 public interface CertificateMapper {
 
     @Mappings({
@@ -19,16 +19,18 @@ public interface CertificateMapper {
             @Mapping(source = "startDate", target = "startDate"),
             @Mapping(source = "endDate", target = "endDate"),
             @Mapping(source = "institution", target = "institution"),
-            @Mapping(source = "levelEducation", target = "levelEducation"),
+            @Mapping(source = "profileId", target = "profileId" ),
+            @Mapping(source = "educationLevelId", target = "educationLevelId" ),
+            @Mapping(source = "educationLevel", target = "educationLevel" ),
+            @Mapping(source = "createAt", target = "createAt"),
+            @Mapping(source = "updateAt", target ="updateAt" ),
+            @Mapping(source = "estado", target = "estado")
     })
     Certificate toCertificate(CertificateDAO dao);
 
     List<Certificate> toCertificates(List<CertificateDAO> daos);
 
     @InheritInverseConfiguration
-    @Mappings({
-            @Mapping(target ="profileId", ignore = true),
-            @Mapping(target ="profile", ignore = true )
-    })
+    @Mapping(target ="profile", ignore = true )
     CertificateDAO toCertificateDAO(Certificate certificate);
 }

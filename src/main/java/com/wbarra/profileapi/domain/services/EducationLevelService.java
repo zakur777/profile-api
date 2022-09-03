@@ -32,4 +32,8 @@ public class EducationLevelService {
             return true;
         }).orElse(false);
     }
+
+    public EducationLevel updateEducationLevel(EducationLevel educationLevel) {
+        return gateway.update(educationLevel);
+    }
 }

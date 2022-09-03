@@ -1,13 +1,22 @@
 package com.wbarra.profileapi.persistence.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.wbarra.profileapi.domain.entities.LevelEducation;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
+@SuperBuilder
+@EqualsAndHashCode(callSuper = false)
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "certificates")
-public class CertificateDAO {
+public class CertificateDAO extends BaseDAO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,17 +27,16 @@ public class CertificateDAO {
 
     private String description;
 
+
     @Column(name = "start_date")
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate startDate;
 
     @Column(name = "end_date")
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate endDate;
 
     private String institution;
-
-    @Column(name = "level_education")
-    @Enumerated(EnumType.STRING)
-    private LevelEducation levelEducation;
 
     @Column(name = "id_profile")
     private Integer profileId;
@@ -36,6 +44,13 @@ public class CertificateDAO {
     @ManyToOne
     @JoinColumn(name = "id_profile", insertable = false, updatable = false)
     private ProfileDAO profile;
+
+    @Column(name = "id_education_level")
+    private Integer educationLevelId;
+
+    @OneToOne
+    @JoinColumn(name = "id_education_level", insertable = false, updatable = false)
+    private EducationLevelDAO educationLevel;
 
     public Integer getCertificateId() {
         return certificateId;
@@ -85,14 +100,6 @@ public class CertificateDAO {
         this.institution = institution;
     }
 
-    public LevelEducation getLevelEducation() {
-        return levelEducation;
-    }
-
-    public void setLevelEducation(LevelEducation levelEducation) {
-        this.levelEducation = levelEducation;
-    }
-
     public Integer getProfileId() {
         return profileId;
     }
@@ -107,5 +114,21 @@ public class CertificateDAO {
 
     public void setProfile(ProfileDAO profile) {
         this.profile = profile;
+    }
+
+    public Integer getEducationLevelId() {
+        return educationLevelId;
+    }
+
+    public void setEducationLevelId(Integer educationLevelId) {
+        this.educationLevelId = educationLevelId;
+    }
+
+    public EducationLevelDAO getEducationLevel() {
+        return educationLevel;
+    }
+
+    public void setEducationLevel(EducationLevelDAO educationLevel) {
+        this.educationLevel = educationLevel;
     }
 }

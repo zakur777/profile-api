@@ -2,13 +2,20 @@ package com.wbarra.profileapi.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.wbarra.profileapi.persistence.models.EducationLevelDAO;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
 
+@SuperBuilder
+@EqualsAndHashCode(callSuper = false)
+@AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Experience {
+public class Experience extends BaseEntity {
     private Integer experienceId;
 
     private String positionName;

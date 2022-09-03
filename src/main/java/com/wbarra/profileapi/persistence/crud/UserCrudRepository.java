@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface UserCrudRepository extends CrudRepository<UserDAO, Integer> {
     List<UserDAO> findByTypeDocumentIdOrderByAgeAsc(Integer typeDocumentId);
+    List<UserDAO> findByProfile_Certificates_educationLevelId(Integer educationLevelId);
 }

@@ -1,6 +1,6 @@
 package com.wbarra.profileapi.persistence.models;
 
-import com.wbarra.profileapi.domain.entities.LevelEducation;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -28,18 +28,16 @@ public class EducationDAO extends BaseDAO {
 
     private String description;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     @Column(name = "start_date")
     private LocalDate startDate;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     @Column(name = "end_date")
     private LocalDate endDate;
 
     @Column(name = "name_of_title")
     private String nameOfTitle;
-
-    @Column(name = "level_education")
-    @Enumerated(EnumType.STRING)
-    private LevelEducation levelEducation;
 
     @Column(name = "id_profile")
     private Integer profileId;
@@ -101,14 +99,6 @@ public class EducationDAO extends BaseDAO {
 
     public void setNameOfTitle(String nameOfTitle) {
         this.nameOfTitle = nameOfTitle;
-    }
-
-    public LevelEducation getLevelEducation() {
-        return levelEducation;
-    }
-
-    public void setLevelEducation(LevelEducation levelEducation) {
-        this.levelEducation = levelEducation;
     }
 
     public Integer getProfileId() {

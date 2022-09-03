@@ -9,7 +9,10 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {EducationLevelMapper.class})
+@Mapper(componentModel = "spring", uses = {
+        EducationLevelMapper.class,
+        ProfileMapper.class
+})
 public interface EducationMapper {
 
     @Mappings({
@@ -19,6 +22,7 @@ public interface EducationMapper {
             @Mapping(source = "startDate", target = "startDate"),
             @Mapping(source = "endDate", target = "endDate"),
             @Mapping(source = "nameOfTitle", target = "nameOfTitle" ),
+            @Mapping(source = "profileId", target = "profileId" ),
             @Mapping(source = "educationLevelId", target = "educationLevelId" ),
             @Mapping(source = "educationLevel", target = "educationLevel" ),
             @Mapping(source = "createAt", target = "createAt"),
@@ -30,9 +34,6 @@ public interface EducationMapper {
     List<Education> toEducations(List<EducationDAO> daos);
 
     @InheritInverseConfiguration
-    @Mappings({
-            @Mapping(target ="profileId", ignore = true),
-            @Mapping(target ="profile", ignore = true )
-    })
+    @Mapping(target = "profile", ignore = true )
     EducationDAO toEducationDAO(Education education);
 }

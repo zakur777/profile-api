@@ -1,24 +1,40 @@
 package com.wbarra.profileapi.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
 
+@SuperBuilder
+@EqualsAndHashCode(callSuper = false)
+@AllArgsConstructor
 @NoArgsConstructor
-public class Certificate {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Certificate extends BaseEntity {
     private Integer certificateId;
 
     private String name;
 
     private String description;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate startDate;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate endDate;
+
 
     private String institution;
 
-    private LevelEducation levelEducation;
+    private Integer educationLevelId;
+
+    private EducationLevel educationLevel;
+
+    private Integer profileId;
 
     public Integer getCertificateId() {
         return certificateId;
@@ -68,12 +84,27 @@ public class Certificate {
         this.institution = institution;
     }
 
-    public LevelEducation getLevelEducation() {
-        return levelEducation;
+    public Integer getEducationLevelId() {
+        return educationLevelId;
     }
 
-    public void setLevelEducation(LevelEducation levelEducation) {
-        this.levelEducation = levelEducation;
+    public void setEducationLevelId(Integer educationLevelId) {
+        this.educationLevelId = educationLevelId;
     }
 
+    public EducationLevel getEducationLevel() {
+        return educationLevel;
+    }
+
+    public void setEducationLevel(EducationLevel educationLevel) {
+        this.educationLevel = educationLevel;
+    }
+
+    public Integer getProfileId() {
+        return profileId;
+    }
+
+    public void setProfileId(Integer profileId) {
+        this.profileId = profileId;
+    }
 }
