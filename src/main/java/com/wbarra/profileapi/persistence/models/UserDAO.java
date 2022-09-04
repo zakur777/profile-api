@@ -2,15 +2,14 @@ package com.wbarra.profileapi.persistence.models;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.wbarra.profileapi.persistence.validators.anotations.ValidAge;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
+@ValidAge(birthday = "birthday", age = "age")
 @Entity
 @Table(name = "users")
 public class UserDAO {
@@ -28,7 +27,7 @@ public class UserDAO {
     @Size(min = 4, max = 120, message = "The name must have at least {min} and at most {max} characters.")
     private String name;
 
-    @NotEmpty(message = "The typeDocumentId is required")
+    @NotNull(message = "The typeDocumentId is required")
     @Positive(message = "The typeDocumentId must be greater than zero")
     @Column(name = "id_type_document")
     private Integer typeDocumentId;
@@ -37,28 +36,38 @@ public class UserDAO {
     @JoinColumn(name = "id_type_document", insertable = false, updatable = false)
     private TypeDocumentDAO typeDocument;
 
+    @NotEmpty(message = "The email is required")
     @Email
     private String mail;
 
+    @Pattern(regexp = "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$", message = "You must enter a valid phone number")
     private String phone;
 
-    @Column(name = "id_address")
+    @NotNull(message = "The id_address is required")
+    @Column(name = "id_address", nullable = false)
     private Integer addressId;
     @OneToOne
     @JoinColumn(name = "id_address", insertable = false, updatable = false)
     private AddressDAO address;
 
+    @Size(min = 2, max = 255, message = "The skill must have at least {min} and at most {max} characters.")
     private String skill;
 
     @Column(name = "is_change_of_residence", nullable = false)
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean isChangeOfResidence;
 
+    @Past
     @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate birthday;
 
+    @NotNull(message = "The age is required")
+    @Min(value = 18, message = "You must be 18 years of age or older")
+    @Max(value = 100, message = "You cannot exceed 100 years of age")
+    @Positive
     private Integer age;
 
+    @Positive
     @Column(name = "id_profile")
     private Integer profileId;
 
