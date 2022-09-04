@@ -1,6 +1,7 @@
 package com.wbarra.profileapi.domain.services;
 
 import com.wbarra.profileapi.domain.entities.Address;
+import com.wbarra.profileapi.domain.entities.Certificate;
 import com.wbarra.profileapi.domain.gateways.AddressGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,5 +32,9 @@ public class AddressService {
             gateway.deleteAddress(id);
             return true;
         }).orElse(false);
+    }
+
+    public Address updateAddress(Address address) {
+        return gateway.update(address);
     }
 }

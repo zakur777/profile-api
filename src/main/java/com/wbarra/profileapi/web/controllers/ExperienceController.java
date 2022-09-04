@@ -1,5 +1,6 @@
 package com.wbarra.profileapi.web.controllers;
 
+import com.wbarra.profileapi.domain.entities.Certificate;
 import com.wbarra.profileapi.domain.entities.Experience;
 import com.wbarra.profileapi.domain.services.ExperienceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,10 @@ public class ExperienceController {
         } else {
             return new ResponseEntity<>(false, HttpStatus.NOT_FOUND);
         }
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<Experience> updateExperience(@RequestBody Experience experience) {
+        return new ResponseEntity<>(service.updateExperience(experience), HttpStatus.OK);
     }
 }

@@ -14,7 +14,10 @@ public interface TypeDocumentMapper {
 
     @Mappings({
             @Mapping(source ="typeDocumentId" , target = "typeDocumentId"),
-            @Mapping(source = "name", target = "name")
+            @Mapping(source = "name", target = "name"),
+            @Mapping(source = "createAt", target = "createAt"),
+            @Mapping(source = "updateAt", target ="updateAt" ),
+            @Mapping(source = "estado", target = "estado")
     })
     TypeDocument toTypeDocument(TypeDocumentDAO dao);
 

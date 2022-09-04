@@ -1,9 +1,17 @@
 package com.wbarra.profileapi.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
+@SuperBuilder
+@EqualsAndHashCode(callSuper = false)
+@AllArgsConstructor
 @NoArgsConstructor
-public class Address {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Address extends BaseEntity {
     private Integer addressId;
 
     private String city;

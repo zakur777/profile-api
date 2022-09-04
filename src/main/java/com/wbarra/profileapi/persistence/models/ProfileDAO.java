@@ -3,14 +3,22 @@ package com.wbarra.profileapi.persistence.models;
 import com.wbarra.profileapi.domain.entities.Certificate;
 import com.wbarra.profileapi.domain.entities.Education;
 import com.wbarra.profileapi.domain.entities.Experience;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.Optional;
 
+@SuperBuilder
+@EqualsAndHashCode(callSuper = false)
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "profile")
-public class ProfileDAO {
+public class ProfileDAO extends BaseDAO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

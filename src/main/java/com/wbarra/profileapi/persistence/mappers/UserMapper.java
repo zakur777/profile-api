@@ -30,7 +30,10 @@ public interface UserMapper {
             @Mapping(source = "birthday", target = "birthday"),
             @Mapping(source = "age", target = "age"),
             @Mapping(source = "profileId", target = "profileId"),
-            @Mapping(source = "profile", target = "profile")
+            @Mapping(source = "profile", target = "profile"),
+            @Mapping(source = "createAt", target = "createAt"),
+            @Mapping(source = "updateAt", target ="updateAt" ),
+            @Mapping(source = "estado", target = "estado")
     })
     User toUser(UserDAO dao);
 

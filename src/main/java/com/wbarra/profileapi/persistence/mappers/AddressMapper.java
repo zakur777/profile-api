@@ -18,6 +18,9 @@ public interface AddressMapper {
             @Mapping(source = "country", target = "country"),
             @Mapping(source = "postalCode", target = "postalCode"),
             @Mapping(source = "street", target = "street"),
+            @Mapping(source = "createAt", target = "createAt"),
+            @Mapping(source = "updateAt", target ="updateAt" ),
+            @Mapping(source = "estado", target = "estado")
     })
     Address toAddress(AddressDAO dao);
 

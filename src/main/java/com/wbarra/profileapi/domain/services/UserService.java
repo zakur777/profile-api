@@ -1,5 +1,6 @@
 package com.wbarra.profileapi.domain.services;
 
+import com.wbarra.profileapi.domain.entities.Certificate;
 import com.wbarra.profileapi.domain.entities.User;
 import com.wbarra.profileapi.domain.gateways.UserGateway;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +52,13 @@ public class UserService {
 
     public List<User> findChangeOfResidence() {
         return gateway.findChangeOfResidence();
+    }
+
+    public User updateUser(User user) {
+        return gateway.update(user);
+    }
+
+    public List<User> findAllUsersPeopleWithMoreThanCertainYearsOfExperience(Integer years) {
+        return gateway.findAllUsersPeopleWithMoreThanCertainYearsOfExperience(years);
     }
 }

@@ -1,5 +1,6 @@
 package com.wbarra.profileapi.domain.gateways;
 
+import com.wbarra.profileapi.domain.entities.Certificate;
 import com.wbarra.profileapi.domain.entities.User;
 import com.wbarra.profileapi.persistence.models.UserDAO;
 import org.springframework.data.repository.query.Param;
@@ -21,4 +22,8 @@ public interface UserGateway {
     List<User> finByProfileCityOrCountry(String city, String country);
 
     List<User> findChangeOfResidence();
+
+    User update(User user);
+
+    List<User> findAllUsersPeopleWithMoreThanCertainYearsOfExperience(Integer years);
 }

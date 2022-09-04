@@ -1,5 +1,6 @@
 package com.wbarra.profileapi.domain.gateways;
 
+import com.wbarra.profileapi.domain.entities.Certificate;
 import com.wbarra.profileapi.domain.entities.TypeDocument;
 
 import java.util.List;
@@ -10,4 +11,6 @@ public interface TypeDocumentGateway {
     Optional<TypeDocument> getTypeDocumentById(Integer id);
     TypeDocument saveTypeDocument(TypeDocument typeDocument);
     void deleteTypeDocumentById(Integer id);
+
+    TypeDocument update(TypeDocument typeDocument);
 }

@@ -1,6 +1,7 @@
 package com.wbarra.profileapi.web.controllers;
 
 import com.wbarra.profileapi.domain.entities.Address;
+import com.wbarra.profileapi.domain.entities.Certificate;
 import com.wbarra.profileapi.domain.services.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,5 +40,10 @@ public class AddressController {
         } else {
             return new ResponseEntity<>(false, HttpStatus.NOT_FOUND);
         }
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<Address> updateAddress(@RequestBody Address address) {
+        return new ResponseEntity<>(service.updateAddress(address), HttpStatus.OK);
     }
 }

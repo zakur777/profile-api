@@ -1,5 +1,6 @@
 package com.wbarra.profileapi.domain.services;
 
+import com.wbarra.profileapi.domain.entities.Certificate;
 import com.wbarra.profileapi.domain.entities.Experience;
 import com.wbarra.profileapi.domain.gateways.ExperienceGateway;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,10 @@ public class ExperienceService {
             gateway.deleteExperience(id);
             return true;
         }).orElse(false);
+    }
+
+    public Experience updateExperience(Experience experience) {
+        return gateway.update(experience);
     }
 
 }

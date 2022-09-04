@@ -1,13 +1,21 @@
 package com.wbarra.profileapi.persistence.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
+@SuperBuilder
+@EqualsAndHashCode(callSuper = false)
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "experiences")
-public class ExperienceDAO {
+public class ExperienceDAO extends BaseDAO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,6 +46,9 @@ public class ExperienceDAO {
     @ManyToOne
     @JoinColumn(name = "id_profile", insertable = false, updatable = false)
     private ProfileDAO profile;
+
+    @Column(name = "years_of_experience")
+    private Integer yearsOfExperience;
 
     public Integer getExperienceId() {
         return experienceId;
@@ -109,5 +120,13 @@ public class ExperienceDAO {
 
     public void setProfile(ProfileDAO profile) {
         this.profile = profile;
+    }
+
+    public Integer getYearsOfExperience() {
+        return yearsOfExperience;
+    }
+
+    public void setYearsOfExperience(Integer yearsOfExperience) {
+        this.yearsOfExperience = yearsOfExperience;
     }
 }

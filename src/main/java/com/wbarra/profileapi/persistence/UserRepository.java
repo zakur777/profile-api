@@ -8,7 +8,9 @@ import com.wbarra.profileapi.persistence.crud.UserCrudRepository;
 import com.wbarra.profileapi.persistence.mappers.AddressMapper;
 import com.wbarra.profileapi.persistence.mappers.ProfileMapper;
 import com.wbarra.profileapi.persistence.mappers.UserMapper;
+import com.wbarra.profileapi.persistence.models.CertificateDAO;
 import com.wbarra.profileapi.persistence.models.UserDAO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -94,6 +96,21 @@ public class UserRepository implements UserGateway {
     @Override
     public List<User> findChangeOfResidence() {
         List<UserDAO> daos = (List<UserDAO>) crudRepository.findChangeOfResidence();
+        return mapper.toUsers(daos);
+    }
+
+    @Override
+    public User update(User user) {
+        UserDAO dao = mapper
+                .toUserDAO(getUserById(user.getUserId()).get());
+        BeanUtils.copyProperties(user, dao);
+        return mapper.toUser(crudRepository.save(dao));
+    }
+
+    @Override
+    public List<User> findAllUsersPeopleWithMoreThanCertainYearsOfExperience(Integer years) {
+        List<UserDAO> daos = (List<UserDAO>) crudRepository
+                .findAllUsersPeopleWithMoreThanCertainYearsOfExperience(years);
         return mapper.toUsers(daos);
     }
 }

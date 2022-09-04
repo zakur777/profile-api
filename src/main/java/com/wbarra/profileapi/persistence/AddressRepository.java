@@ -5,6 +5,8 @@ import com.wbarra.profileapi.domain.gateways.AddressGateway;
 import com.wbarra.profileapi.persistence.crud.AddressCrudRepository;
 import com.wbarra.profileapi.persistence.mappers.AddressMapper;
 import com.wbarra.profileapi.persistence.models.AddressDAO;
+import com.wbarra.profileapi.persistence.models.CertificateDAO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -40,5 +42,13 @@ public class AddressRepository implements AddressGateway {
     @Override
     public void deleteAddress(Integer id) {
         crudRepository.deleteById(id);
+    }
+
+    @Override
+    public Address update(Address address) {
+        AddressDAO dao = mapper
+                .toAddressDAO(getAddressById(address.getAddressId()).get());
+        BeanUtils.copyProperties(address, dao);
+        return mapper.toAddress(crudRepository.save(dao));
     }
 }

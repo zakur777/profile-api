@@ -1,5 +1,6 @@
 package com.wbarra.profileapi.domain.gateways;
 
+import com.wbarra.profileapi.domain.entities.Certificate;
 import com.wbarra.profileapi.domain.entities.Profile;
 
 import java.util.List;
@@ -10,4 +11,6 @@ public interface ProfileGateway {
     Optional<Profile> getProfileById(Integer id);
     Profile saveProfile(Profile profile);
     void deleteProfile(Integer id);
+
+    Profile update(Profile profile);
 }

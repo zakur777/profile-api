@@ -3,16 +3,24 @@ package com.wbarra.profileapi.persistence.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.wbarra.profileapi.persistence.validators.anotations.ValidAge;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 
+@SuperBuilder
+@EqualsAndHashCode(callSuper = false)
+@AllArgsConstructor
+@NoArgsConstructor
 @ValidAge(birthday = "birthday", age = "age")
 @Entity
 @Table(name = "users")
-public class UserDAO {
+public class UserDAO extends BaseDAO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -21,7 +21,10 @@ public interface ProfileMapper {
             @Mapping(source = "educations", target = "educations"),
             @Mapping(source = "experiences", target = "experiences"),
             @Mapping(source = "certificates", target = "certificates"),
-            @Mapping(source = "aboutMe", target = "aboutMe")
+            @Mapping(source = "aboutMe", target = "aboutMe"),
+            @Mapping(source = "createAt", target = "createAt"),
+            @Mapping(source = "updateAt", target ="updateAt" ),
+            @Mapping(source = "estado", target = "estado")
     })
     Profile toProfile(ProfileDAO dao);
 

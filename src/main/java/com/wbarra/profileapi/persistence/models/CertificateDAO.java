@@ -1,7 +1,6 @@
 package com.wbarra.profileapi.persistence.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.wbarra.profileapi.domain.entities.LevelEducation;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

@@ -20,13 +20,17 @@ public interface ExperienceMapper {
             @Mapping(source = "endDate", target = "endDate"),
             @Mapping(source = "country", target = "country"),
             @Mapping(source = "description", target = "description"),
-            @Mapping(source = "profileId", target = "profileId")
+            @Mapping(source = "profileId", target = "profileId"),
+            @Mapping(source = "createAt", target = "createAt"),
+            @Mapping(source = "updateAt", target ="updateAt" ),
+            @Mapping(source = "estado", target = "estado")
     })
     Experience toExperience(ExperienceDAO dao);
 
     List<Experience> toExperiences(List<ExperienceDAO> daos);
 
     @InheritInverseConfiguration
+    @Mapping(target = "yearsOfExperience", ignore = true )
     ExperienceDAO toExperienceDAO(Experience experience);
 
 }

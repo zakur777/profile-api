@@ -1,5 +1,6 @@
 package com.wbarra.profileapi.web.controllers;
 
+import com.wbarra.profileapi.domain.entities.Certificate;
 import com.wbarra.profileapi.domain.entities.Profile;
 import com.wbarra.profileapi.domain.services.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,10 @@ public class ProfileController {
         } else {
             return new ResponseEntity<>(false, HttpStatus.NOT_FOUND);
         }
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<Profile> updateProfile(@RequestBody Profile profile) {
+        return new ResponseEntity<>(service.updateProfile(profile), HttpStatus.OK);
     }
 }

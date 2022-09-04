@@ -1,5 +1,6 @@
 package com.wbarra.profileapi.domain.services;
 
+import com.wbarra.profileapi.domain.entities.Certificate;
 import com.wbarra.profileapi.domain.entities.TypeDocument;
 import com.wbarra.profileapi.domain.gateways.TypeDocumentGateway;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,7 @@ public class TypeDocumentService {
         }).orElse(false);
     }
 
-
+    public TypeDocument updateTypeDocument(TypeDocument typeDocument) {
+        return gateway.update(typeDocument);
+    }
 }

@@ -1,5 +1,6 @@
 package com.wbarra.profileapi.domain.services;
 
+import com.wbarra.profileapi.domain.entities.Certificate;
 import com.wbarra.profileapi.domain.entities.Profile;
 import com.wbarra.profileapi.domain.gateways.ProfileGateway;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,9 @@ public class ProfileService {
             gateway.deleteProfile(id);
             return true;
         }).orElse(false);
+    }
+
+    public Profile updateProfile(Profile profile) {
+        return gateway.update(profile);
     }
 }

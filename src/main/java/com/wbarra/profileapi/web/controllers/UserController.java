@@ -1,5 +1,6 @@
 package com.wbarra.profileapi.web.controllers;
 
+import com.wbarra.profileapi.domain.entities.Certificate;
 import com.wbarra.profileapi.domain.entities.User;
 import com.wbarra.profileapi.domain.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,5 +68,15 @@ public class UserController {
     @GetMapping("/all/chageOfResidence")
     public ResponseEntity<List<User>> findChangeOfResidence() {
         return new ResponseEntity<>(service.findChangeOfResidence(), HttpStatus.OK);
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<User> updateUser(@RequestBody User user) {
+        return new ResponseEntity<>(service.updateUser(user), HttpStatus.OK);
+    }
+
+    @GetMapping("/all/years/{years}")
+    public ResponseEntity<List<User>> findAllUsersPeopleWithMoreThanCertainYearsOfExperience(@PathVariable("years") Integer years) {
+        return new ResponseEntity<>(service.findAllUsersPeopleWithMoreThanCertainYearsOfExperience(years), HttpStatus.OK);
     }
 }

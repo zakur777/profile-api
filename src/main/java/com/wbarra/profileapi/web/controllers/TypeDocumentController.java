@@ -1,5 +1,6 @@
 package com.wbarra.profileapi.web.controllers;
 
+import com.wbarra.profileapi.domain.entities.Certificate;
 import com.wbarra.profileapi.domain.entities.TypeDocument;
 import com.wbarra.profileapi.domain.services.TypeDocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,10 @@ public class TypeDocumentController {
         } else {
             return new ResponseEntity<>(false, HttpStatus.NOT_FOUND);
         }
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<TypeDocument> updateCertificate(@RequestBody TypeDocument typeDocument) {
+        return new ResponseEntity<>(service.updateTypeDocument(typeDocument), HttpStatus.OK);
     }
 }
