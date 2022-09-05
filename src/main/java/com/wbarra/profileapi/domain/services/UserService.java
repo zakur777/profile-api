@@ -61,4 +61,8 @@ public class UserService {
     public List<User> findAllUsersPeopleWithMoreThanCertainYearsOfExperience(Integer years) {
         return gateway.findAllUsersPeopleWithMoreThanCertainYearsOfExperience(years);
     }
+
+    public List<User> FindUsersBySkill(String skill) {
+        return gateway.FindUsersBySkill(skill);
+    }
 }

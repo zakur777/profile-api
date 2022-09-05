@@ -5,6 +5,7 @@ import org.hibernate.annotations.Where;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -94,4 +95,9 @@ public interface UserCrudRepository extends CrudRepository<UserDAO, Integer> {
             "group by us.id_user " +
             "having sum(distinct e.years_of_experience) > :years", nativeQuery = true)
     List<UserDAO> findAllUsersPeopleWithMoreThanCertainYearsOfExperience(@Param("years") Integer years);
+
+    @Query(value = "select us.* " +
+            "from users us " +
+            "where UPPER(us.skill) like %:skill% " , nativeQuery = true)
+    List<UserDAO> FindUsersBySkill(@Param("skill") String skill);
 }

@@ -113,4 +113,10 @@ public class UserRepository implements UserGateway {
                 .findAllUsersPeopleWithMoreThanCertainYearsOfExperience(years);
         return mapper.toUsers(daos);
     }
+
+    @Override
+    public List<User> FindUsersBySkill(String skill) {
+        List<UserDAO> daos = (List<UserDAO>) crudRepository.FindUsersBySkill(skill);
+        return mapper.toUsers(daos);
+    }
 }

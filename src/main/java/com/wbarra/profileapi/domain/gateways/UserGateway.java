@@ -26,4 +26,6 @@ public interface UserGateway {
     User update(User user);
 
     List<User> findAllUsersPeopleWithMoreThanCertainYearsOfExperience(Integer years);
+
+    List<User> FindUsersBySkill(@Param("skill") String skill);
 }

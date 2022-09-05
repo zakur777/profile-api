@@ -79,4 +79,9 @@ public class UserController {
     public ResponseEntity<List<User>> findAllUsersPeopleWithMoreThanCertainYearsOfExperience(@PathVariable("years") Integer years) {
         return new ResponseEntity<>(service.findAllUsersPeopleWithMoreThanCertainYearsOfExperience(years), HttpStatus.OK);
     }
+
+    @GetMapping("/all/skill/{skill}")
+    public ResponseEntity<List<User>> FindUsersBySkill(@PathVariable("skill") String skill) {
+        return new ResponseEntity<>(service.FindUsersBySkill(skill.toUpperCase()), HttpStatus.OK);
+    }
 }
